@@ -44,7 +44,7 @@ const getSpecificProduct = async (req: Request, res: Response) => {
 
     try {       
         const productId = req.params.productId
-        console.log(productId)
+        
         const result = await bikeService.getSpecificProduct(productId)
         res.json({            
             messege: 'Product getting successfully',
@@ -59,9 +59,50 @@ const getSpecificProduct = async (req: Request, res: Response) => {
     })
     }
 }
+const updateProduct = async (req: Request, res: Response) => {
+
+    try {       
+        const productId = req.params.productId
+        const product = req.body
+        
+        const result = await bikeService.updateProduct(productId, product)
+        res.json({            
+            messege: 'Product updated successfully',
+            status: true,
+            result
+        })
+    } catch (error) {
+        res.json({            
+            messege: 'Something went wrong',
+            status: false,
+            error
+    })
+    }
+}
+const deleteProduct = async (req: Request, res: Response) => {
+
+    try {       
+        const productId = req.params.productId    
+        
+        await bikeService.deleteProduct(productId)
+        res.json({            
+            messege: 'Product deleted successfully',
+            status: true,
+            result: {}
+        })
+    } catch (error) {
+        res.json({            
+            messege: 'Something went wrong',
+            status: false,
+            error
+    })
+    }
+}
 
 export const bikeController = {
     createProduct,
     getProduct,
     getSpecificProduct,
+    updateProduct,
+    deleteProduct
 }
