@@ -9,7 +9,7 @@ const createProduct = async (req: Request, res: Response) => {
 
         const result = await bikeService.createProduct(product)
         res.json({            
-            messege: 'Product created successfully',
+            messege: 'Product is created successfully',
             status: true,
             data: result
         })
@@ -28,7 +28,7 @@ const getProduct = async (req: Request, res: Response) => {
 
         const result = await bikeService.getProduct()
         res.json({            
-            messege: 'Product getting successfully',
+            messege: 'Product is getting successfully',
             status: true,
             result
         })
@@ -47,7 +47,7 @@ const getSpecificProduct = async (req: Request, res: Response) => {
         
         const result = await bikeService.getSpecificProduct(productId)
         res.json({            
-            messege: 'Product getting successfully',
+            messege: 'Specific product getting successfully',
             status: true,
             result
         })
